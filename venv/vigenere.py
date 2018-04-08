@@ -1,5 +1,5 @@
 """
-This class handles the Vigenere Cipher. 
+This class handles the Vigenere Cipher.
 """
 
 import collections
@@ -13,6 +13,7 @@ def main():
     print(ord('a'))
     print(friedmantest(text)) #perform friedman test
     print(encrypt(text, 'pie'))
+    print(decrypt(text, 'pie'))
 
 
 
@@ -47,11 +48,11 @@ def decrypt(ciphertext, key):
     ordnumber = 0
     j = len(key)
     decrypted = ''
-    for c in plaintext:
+    for c in ciphertext:
         if (i == j):
             i = 0
         ordnumber = ord(c) - (ord(key[i])-97)
-        if(ordnumber < 122):
+        if(ordnumber < 97):
             ordnumber += 26
         decrypted += chr(ordnumber)
         i+=1
