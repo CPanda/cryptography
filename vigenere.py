@@ -1,5 +1,7 @@
 """
 This class handles the Vigenere Cipher.
+
+Needs to be transformed into an object instead of collection of functions. (probably)
 """
 
 import collections
@@ -7,11 +9,12 @@ import re
 import math
 import functools
 
-
+"""
+Temporary testing function. This will be removed later on. 
+"""
 def main():
     text = input("Enter text\n")
     text = processtext(text) #turn text into all lowercase letters for processing.
-    print(ord('a'))
     print(friedmantest(text)) #perform friedman test
     print(encrypt(text, 'pie'))
     print(decrypt(text, 'pie'))
@@ -38,7 +41,10 @@ def friedmantest(ciphertext):
     total = 0
     for key in analyze:
         total += analyze[key]*(analyze[key]-1) #n(n-1) for each letter found in string
-    return total/(numberofletters*(numberofletters-1)) #( sum of n(n-1) ) / total # of letters
+    if((numberofletters-1) != 0): #check for division by zero
+        return total/(numberofletters*(numberofletters-1)) #( sum of n(n-1) ) / total # of letters
+    else:
+        return "not able to calculate"
 
 
 """
@@ -62,6 +68,8 @@ def decrypt(ciphertext, key):
 
 """
 Kasiski test
+
+Still a work in progress. 
 """
 
 def kasiskitest(ciphertext):
