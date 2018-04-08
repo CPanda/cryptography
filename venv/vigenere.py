@@ -4,7 +4,8 @@ This class handles the Vigenere Cipher.
 
 import collections
 import re
-
+import math
+import functools
 
 
 def main():
@@ -14,6 +15,7 @@ def main():
     print(friedmantest(text)) #perform friedman test
     print(encrypt(text, 'pie'))
     print(decrypt(text, 'pie'))
+    print(kasiskitest(text))
 
 
 
@@ -36,7 +38,7 @@ def friedmantest(ciphertext):
     total = 0
     for key in analyze:
         total += analyze[key]*(analyze[key]-1) #n(n-1) for each letter found in string
-    return total/numberofletters #( sum of n(n-1) ) / total # of letters
+    return total/(numberofletters*(numberofletters-1)) #( sum of n(n-1) ) / total # of letters
 
 
 """
@@ -57,6 +59,48 @@ def decrypt(ciphertext, key):
         decrypted += chr(ordnumber)
         i+=1
     return decrypted
+
+"""
+Kasiski test
+"""
+
+def kasiskitest(ciphertext):
+    # Goes through the message and finds any 3 to 5 letter sequences
+    # that are repeated. Returns a dict with the keys of the sequence and
+    # values of a list of spacings (num of letters between the repeats).
+
+    # Compile a list of seqLen-letter sequences found in the message.
+    spacings = []
+    seqSpacings = {} # keys are sequences, values are list of int spacings
+    for seqLen in range(3, 6):
+        for seqStart in range(len(ciphertext) - seqLen):
+            # Determine what the sequence is, and store it in seq
+            seq = ciphertext[seqStart:seqStart + seqLen]
+
+            # Look for this sequence in the rest of the message
+            for i in range(seqStart + seqLen, len(ciphertext) - seqLen):
+                if ciphertext[i:i + seqLen] == seq:
+                    # Found a repeated sequence.
+                    if seq not in seqSpacings:
+                        seqSpacings[seq] = [] # initialize blank list
+
+                    # Append the spacing distance between the repeated
+                    # sequence and the original sequence.
+                    spacings.append(i-seqStart)
+                    seqSpacings[seq].append(i - seqStart)
+    if(len(spacings) > 2):
+        result = spacings[0]
+        for i in spacings[1:]:
+            result = math.gcd(result, i)
+        return result
+    elif(len(spacings) == 2):
+        return math.gcd(spacings[0],spacings[1])
+    elif(len(spacings) == 0):
+        return
+    else:
+        return spacings[0]
+
+
 
 
 """
