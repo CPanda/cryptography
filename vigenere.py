@@ -1,7 +1,6 @@
 """
-This class handles the Vigenere Cipher.
+These functions handle the Vigenere Cipher.
 
-Needs to be transformed into an object instead of collection of functions. (probably)
 """
 
 import collections
