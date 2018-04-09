@@ -10,24 +10,25 @@ import math
 import functools
 
 """
-Temporary testing function. This will be removed later on. 
+Temporary testing function. This will be removed later on.
 """
-def main():
+
+
+def main1():
     text = input("Enter text\n")
-    text = processtext(text) #turn text into all lowercase letters for processing.
-    print(friedmantest(text)) #perform friedman test
+    text = processtext(text)  # turn text into all lowercase letters for processing.
+    print(friedmantest(text))  # perform friedman test
     print(encrypt(text, 'pie'))
     print(decrypt(text, 'pie'))
     print(kasiskitest(text))
 
 
-
 def processtext(text):
-    text = text.lower() #transform to lower case
+    text = text.lower()  # transform to lower case
     regex = re.compile('[^a-zA-Z]')
-    text = regex.sub('', text) #remove non-letter items.
+    text = regex.sub('', text)  # remove non-letter items.
     regex = re.compile(r'\s+')
-    text = regex.sub('', text) #remove all whitespace
+    text = regex.sub('', text)  # remove all whitespace
     return text
 
 
@@ -35,14 +36,16 @@ def processtext(text):
 Performs the Friedman test on the entered ciphertext. 
 
 """
+
+
 def friedmantest(ciphertext):
     analyze = frequency(ciphertext)
     numberofletters = len(ciphertext)
     total = 0
     for key in analyze:
-        total += analyze[key]*(analyze[key]-1) #n(n-1) for each letter found in string
-    if((numberofletters-1) != 0): #check for division by zero
-        return total/(numberofletters*(numberofletters-1)) #( sum of n(n-1) ) / total # of letters
+        total += analyze[key] * (analyze[key] - 1)  # n(n-1) for each letter found in string
+    if ((numberofletters - 1) != 0):  # check for division by zero
+        return total / (numberofletters * (numberofletters - 1))  # ( sum of n(n-1) ) / total # of letters
     else:
         return "not able to calculate"
 
@@ -50,6 +53,7 @@ def friedmantest(ciphertext):
 """
 Decrypts using the Vigenere Cipher
 """
+
 
 def decrypt(ciphertext, key):
     i = 0
@@ -59,18 +63,20 @@ def decrypt(ciphertext, key):
     for c in ciphertext:
         if (i == j):
             i = 0
-        ordnumber = ord(c) - (ord(key[i])-97)
-        if(ordnumber < 97):
+        ordnumber = ord(c) - (ord(key[i]) - 97)
+        if (ordnumber < 97):
             ordnumber += 26
         decrypted += chr(ordnumber)
-        i+=1
+        i += 1
     return decrypted
+
 
 """
 Kasiski test
 
 Still a work in progress. 
 """
+
 
 def kasiskitest(ciphertext):
     # Goes through the message and finds any 3 to 5 letter sequences
@@ -79,7 +85,7 @@ def kasiskitest(ciphertext):
 
     # Compile a list of seqLen-letter sequences found in the message.
     spacings = []
-    seqSpacings = {} # keys are sequences, values are list of int spacings
+    seqSpacings = {}  # keys are sequences, values are list of int spacings
     for seqLen in range(3, 6):
         for seqStart in range(len(ciphertext) - seqLen):
             # Determine what the sequence is, and store it in seq
@@ -90,25 +96,23 @@ def kasiskitest(ciphertext):
                 if ciphertext[i:i + seqLen] == seq:
                     # Found a repeated sequence.
                     if seq not in seqSpacings:
-                        seqSpacings[seq] = [] # initialize blank list
+                        seqSpacings[seq] = []  # initialize blank list
 
                     # Append the spacing distance between the repeated
                     # sequence and the original sequence.
-                    spacings.append(i-seqStart)
+                    spacings.append(i - seqStart)
                     seqSpacings[seq].append(i - seqStart)
-    if(len(spacings) > 2):
+    if (len(spacings) > 2):
         result = spacings[0]
         for i in spacings[1:]:
             result = math.gcd(result, i)
         return result
-    elif(len(spacings) == 2):
-        return math.gcd(spacings[0],spacings[1])
-    elif(len(spacings) == 0):
+    elif (len(spacings) == 2):
+        return math.gcd(spacings[0], spacings[1])
+    elif (len(spacings) == 0):
         return
     else:
         return spacings[0]
-
-
 
 
 """
@@ -116,7 +120,9 @@ Encrypts using the Vigenere cipher.
 
 """
 
+
 def encrypt(plaintext, key):
+    plaintext = processtext(plaintext)
     i = 0
     ordnumber = 0
     j = len(key)
@@ -124,11 +130,11 @@ def encrypt(plaintext, key):
     for c in plaintext:
         if (i == j):
             i = 0
-        ordnumber = ord(c) + (ord(key[i])-97)
-        if(ordnumber > 122):
+        ordnumber = ord(c) + (ord(key[i]) - 97)
+        if (ordnumber > 122):
             ordnumber -= 26
         crypted += chr(ordnumber)
-        i+=1
+        i += 1
     return crypted
 
 
@@ -136,6 +142,4 @@ def frequency(input):
     letters = collections.Counter(input)
     return letters
 
-
-main() #temporary for testing.
-
+# main() #temporary for testing.

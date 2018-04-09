@@ -66,7 +66,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem">
+                      <object class="GtkImageMenuItem" id="gtk-quit">
                         <property name="label">gtk-quit</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -189,6 +189,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="text" translatable="yes">Decrypt</property>
+                <signal name="clicked" handler="decrypt_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -201,6 +202,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="text" translatable="yes">Encrypt</property>
+                <signal name="clicked" handler="encrypt_clicked_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -216,7 +218,7 @@
         </child>
       </object>
     </child>
-    <child>
+    <child type="titlebar">
       <placeholder/>
     </child>
   </object>
