@@ -1,7 +1,7 @@
 """
 This is the main python file that will use functions from playfair, vigenere, etc.
 
-Simple GTK Glade GUI.
+Simple QT5 Gui 
 
 """
 
