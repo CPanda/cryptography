@@ -17,7 +17,7 @@ class MainW (QMainWindow, Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
-        #self.pushButton.clicked.connect(self.PrintSomething)
+        self.actionQuit.triggered.connect(QApplication.quit)
         self.vg_encryptText.clicked.connect(self.vg_encrypt)
     def vg_encrypt(self):
         text = self.vg_plaintextEdit.toPlainText()
