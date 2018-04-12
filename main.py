@@ -5,30 +5,34 @@ Simple GTK Glade GUI.
 
 """
 
-import playfair as pf #this one is not complete yet.
-import vigenere as vc
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+import sys
+import vigenere as vg
+import playfair as pf
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from crypto import Ui_MainWindow
+
+class MainW (QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.setupUi(self)
+        #self.pushButton.clicked.connect(self.PrintSomething)
+        self.vg_encryptText.clicked.connect(self.vg_encrypt)
+    def vg_encrypt(self):
+        text = self.vg_plaintextEdit.toPlainText()
+        key = self.vg_key.toPlainText()
+        #print(vg.encrypt(text, key))
+        self.vg_encrypted_text.setText(vg.encrypt(text,key))
 
 
-class Handler:
-    def decrypt_clicked(self, button):
-        text = builder.get_object("maintext")
-        print(vc.decrypt(text.get_text(), 'kool'))
-    def encrypt_clicked_cb(self, button):
-        text = builder.get_object("maintext")
-        print(vc.encrypt(text.get_text(), 'kool'))
 
-builder = Gtk.Builder()
-builder.add_from_file("gui.glade")
-builder.connect_signals(Handler())
+if __name__ == '__main__':
 
-window = builder.get_object("mainwin")
-window.connect("destroy", Gtk.main_quit)
-window.show_all()
-
-Gtk.main()
+    app = QApplication(sys.argv)
+    myapp = MainW()
+    myapp.show()
+    sys.exit(app.exec_())
 
 
 
