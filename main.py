@@ -1,7 +1,7 @@
 """
 This is the main python file that will use functions from playfair, vigenere, etc.
 
-Simple QT5 Gui 
+Simple QT5 Gui
 
 """
 
@@ -19,6 +19,11 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.actionQuit.triggered.connect(QApplication.quit)
         self.vg_encryptText.clicked.connect(self.vg_encrypt)
+        self.vg_decryptText.clicked.connect(self.vg_decrypt)
+    def vg_decrypt(self):
+        text = self.vg_encrypted_text.toPlainText()
+        key = self.vg_key.toPlainText()
+        self.vg_plaintextEdit.setText(vg.decrypt(text,key))
     def vg_encrypt(self):
         text = self.vg_plaintextEdit.toPlainText()
         key = self.vg_key.toPlainText()
