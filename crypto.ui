@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>913</width>
-    <height>922</height>
+    <width>726</width>
+    <height>839</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -50,7 +50,7 @@
               <item>
                <widget class="QLabel" name="label_2">
                 <property name="text">
-                 <string>Plain text</string>
+                 <string>Plain Text</string>
                 </property>
                </widget>
               </item>
@@ -93,13 +93,34 @@
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Key</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="QTextEdit" name="textEdit"/>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_3"/>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Plain Text</string>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QTextEdit" name="textEdit_4"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Encrypted</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_3"/>
               </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -121,6 +142,40 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_5">
+             <attribute name="title">
+              <string>Atbash</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Plain Text</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_7"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Encrypted</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_8"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="atbash">
+                <property name="text">
+                 <string>Encrypt/Decrypt</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -133,26 +188,162 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab_2">
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
+            <widget class="QWidget" name="tab_9">
+             <attribute name="title">
+              <string>Default CipherText</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QTextEdit" name="textEdit_2"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton">
+                <property name="text">
+                 <string>Set CipherText For All Analysis Options</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="kasiski_2">
              <attribute name="title">
               <string>&amp;Kasiski Test</string>
              </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_7">
+              <item>
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Encrypted Text</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_6"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Results</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="textEdit_9"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="analyze_kasisiki">
+                <property name="text">
+                 <string>Analyze</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="friedman_test_2">
              <attribute name="title">
               <string>Friedman Test</string>
              </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Encrypted Text</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="friedman_text"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Results</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="friedman_results"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="analyze_friedman">
+                <property name="text">
+                 <string>Analyze</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="tab_8">
              <attribute name="title">
               <string>Frequency Analysis</string>
              </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="text">
+                 <string>Encrypted Text</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="freq_encrypt_text"/>
+              </item>
+              <item>
+               <widget class="MatplotlibWidget" name="freq_graph"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="analyze_freq">
+                <property name="text">
+                 <string>Analyze</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_6">
+             <attribute name="title">
+              <string>Vigenere Frequency Analysis</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Key Length (Number of Graphs/Splits. You may determine this from the Kasiski Test)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="vg_key_length"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>Encrypted Text</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="vg_freq_analysis"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="vg_freq_go">
+                <property name="text">
+                 <string>Analyze</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </widget>
           </item>
          </layout>
+        </widget>
+        <widget class="QWidget" name="tab_7">
+         <attribute name="title">
+          <string>Set Default Encrypted Text</string>
+         </attribute>
         </widget>
        </widget>
       </item>
@@ -165,7 +356,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>913</width>
+     <width>726</width>
      <height>20</height>
     </rect>
    </property>
@@ -177,8 +368,9 @@
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
-     <string>Abo&amp;ut</string>
+     <string>Help</string>
     </property>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAbout"/>
@@ -199,7 +391,19 @@
     <string>&amp;Quit</string>
    </property>
   </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MatplotlibWidget</class>
+   <extends>QWidget</extends>
+   <header>matplotlibwidget</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -2,3 +2,7 @@ compile ui file: pyuic5 -o crypto.py -x crypto.ui
 compile exe: pyinstaller --onefile --windowed main.py
 
 platforms/ dll files must bin in the same dir as the exe.
+
+
+for matplotlib plugin
+export  PYQTDESIGNERPATH=/usr/lib/qt/plugins/designer
