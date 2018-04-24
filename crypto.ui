@@ -30,7 +30,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -294,43 +294,34 @@
                <widget class="MatplotlibWidget" name="freq_graph"/>
               </item>
               <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item>
+                 <widget class="QPushButton" name="save_image">
+                  <property name="text">
+                   <string>Save Image</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="split_text">
+                  <property name="text">
+                   <string>Split Text</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="eng_freq_button">
+                  <property name="text">
+                   <string>English Freqency Graph</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
                <widget class="QPushButton" name="analyze_freq">
                 <property name="text">
-                 <string>Analyze</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="tab_6">
-             <attribute name="title">
-              <string>Vigenere Frequency Analysis</string>
-             </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <item>
-               <widget class="QLabel" name="label_14">
-                <property name="text">
-                 <string>Key Length (Number of Graphs/Splits. You may determine this from the Kasiski Test)</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="vg_key_length"/>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_15">
-                <property name="text">
-                 <string>Encrypted Text</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTextEdit" name="vg_freq_analysis"/>
-              </item>
-              <item>
-               <widget class="QPushButton" name="vg_freq_go">
-                <property name="text">
-                 <string>Analyze</string>
+                 <string>Plot Frequency</string>
                 </property>
                </widget>
               </item>
@@ -339,11 +330,6 @@
            </widget>
           </item>
          </layout>
-        </widget>
-        <widget class="QWidget" name="tab_7">
-         <attribute name="title">
-          <string>Set Default Encrypted Text</string>
-         </attribute>
         </widget>
        </widget>
       </item>

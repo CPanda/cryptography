@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created by: PyQt5 UI code generator 5.10
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -15,7 +15,7 @@ class Ui_about(object):
         self.buttonBox = QtWidgets.QDialogButtonBox(about)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayoutWidget = QtWidgets.QWidget(about)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(50, 30, 311, 201))
@@ -41,7 +41,7 @@ class Ui_about(object):
     def retranslateUi(self, about):
         _translate = QtCore.QCoreApplication.translate
         about.setWindowTitle(_translate("about", "Dialog"))
-        self.label.setText(_translate("about", "Created For Dr. Polhill"))
+        self.label.setText(_translate("about", "Version Alpha 0.1"))
         self.label_3.setText(_translate("about", "By: Dylan Hoban, Matthew Warran"))
         self.label_2.setText(_translate("about", "Bloomsburg University"))
 
