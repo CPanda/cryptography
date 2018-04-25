@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
-    <height>821</height>
+    <width>649</width>
+    <height>843</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -196,10 +196,10 @@
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_10">
               <item>
-               <widget class="QTextEdit" name="textEdit_2"/>
+               <widget class="QTextEdit" name="default_cipher_textbox"/>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton">
+               <widget class="QPushButton" name="default_cipher">
                 <property name="text">
                  <string>Set CipherText For All Analysis Options</string>
                 </property>
@@ -220,7 +220,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_6"/>
+               <widget class="QTextEdit" name="kasiski_test"/>
               </item>
               <item>
                <widget class="QLabel" name="label_9">
@@ -333,6 +333,13 @@
                 <item>
                  <widget class="QLineEdit" name="key_len"/>
                 </item>
+                <item>
+                 <widget class="QPushButton" name="split_text">
+                  <property name="text">
+                   <string>Split Text</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
@@ -359,7 +366,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>622</width>
+     <width>649</width>
      <height>20</height>
     </rect>
    </property>
