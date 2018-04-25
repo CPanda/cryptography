@@ -15,26 +15,6 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Key Length (Number of splits. You can determine this from the Kasiski test)</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="lineEdit"/>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Encrypted Text</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTextEdit" name="split_encrypted"/>
-   </item>
-   <item>
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Result</string>
@@ -45,19 +25,12 @@
     <widget class="QTextEdit" name="split_result"/>
    </item>
    <item>
-    <widget class="QPushButton" name="split_analyze">
-     <property name="text">
-      <string>Analyze</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>

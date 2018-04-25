@@ -29,6 +29,7 @@ class Ui_save_graph(object):
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(save_graph)
+        self.buttonBox.accepted.connect(save_graph.accept)
         QtCore.QMetaObject.connectSlotsByName(save_graph)
 
     def retranslateUi(self, save_graph):

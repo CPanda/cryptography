@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>726</width>
-    <height>839</height>
+    <width>622</width>
+    <height>821</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -291,10 +291,27 @@
                <widget class="QTextEdit" name="freq_encrypt_text"/>
               </item>
               <item>
+               <widget class="QPushButton" name="analyze_freq">
+                <property name="text">
+                 <string>Plot Frequency</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <widget class="MatplotlibWidget" name="freq_graph"/>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <widget class="QLabel" name="label_15">
+                  <property name="text">
+                   <string>File Name:  </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="save_text"/>
+                </item>
                 <item>
                  <widget class="QPushButton" name="save_image">
                   <property name="text">
@@ -302,26 +319,26 @@
                   </property>
                  </widget>
                 </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
                 <item>
-                 <widget class="QPushButton" name="split_text">
+                 <widget class="QLabel" name="label_14">
                   <property name="text">
-                   <string>Split Text</string>
+                   <string>Key Length:</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="eng_freq_button">
-                  <property name="text">
-                   <string>English Freqency Graph</string>
-                  </property>
-                 </widget>
+                 <widget class="QLineEdit" name="key_len"/>
                 </item>
                </layout>
               </item>
               <item>
-               <widget class="QPushButton" name="analyze_freq">
+               <widget class="QPushButton" name="eng_freq_button">
                 <property name="text">
-                 <string>Plot Frequency</string>
+                 <string>English Freqency Graph</string>
                 </property>
                </widget>
               </item>
@@ -342,7 +359,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>726</width>
+     <width>622</width>
      <height>20</height>
     </rect>
    </property>
