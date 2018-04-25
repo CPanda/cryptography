@@ -35,6 +35,43 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.analyze_freq.clicked.connect(self.freq_analyze)
         self.eng_freq_button.clicked.connect(self.showenglish_freq_dialog)
         self.save_image.clicked.connect(self.saveimage)
+        self.save_text.setText("plot.png")
+        self.split_text.clicked.connect(self.split)
+    def split(self):
+        text = self.freq_encrypt_text.toPlainText()
+        loopno = int(self.key_len.text())
+        print(loopno)
+        arry = []
+        for i in range(1,loopno+1):
+            arry.append(self.getNthLetters(i, loopno, text))
+        print("array values", arry)
+        #print("Result", self.getNthLetters(1,text,2))
+
+        dialog = QDialog(self)
+        dialog.ui = Ui_split_Dialog()
+        dialog.ui.setupUi(dialog)
+        #dialog.setAttribute(Qt.WA_DeleteOnClose)
+        #dialog.ui.connect(dialog.ui, SIGNAL("finished(int)"), lambda x:self.finished())
+        for i in range(len(arry)):
+            dialog.ui.split_result.append(arry[i]+'\n')
+        #dialog.resize(200,100)
+        dialog.setModal(False)
+        dialog.show()
+        #dialog.ui.split_result.setText()
+
+
+
+
+    def getNthLetters(self, n, keylen, msg):
+        i = n - 1
+        letters = []
+        while i < len(msg):
+            letters.append(msg[i])
+            i += keylen
+        return ''.join(letters)
+
+
+
     def freq_analyze(self):
         self.freq_graph.axes.clear()
         text = self.freq_encrypt_text.toPlainText()
@@ -50,13 +87,10 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.freq_graph.axes.set_xticklabels(labels)
         self.freq_graph.draw()
         #self.freq_graph.figure.savefig('fig.png')
-    def saveimage(self):
-        dialog = QDialog()
-        dialog.ui = Ui_save_graph()
-        dialog.ui.setupUi(dialog)
-        dialog.exec_()
-        dialog.ui.save_image.clicked.connect(self.freq_graph.figure.savefig(dialog.ui.lineEdit.text()))
 
+    def saveimage(self):
+        text = self.save_text.text()
+        self.freq_graph.figure.savefig(text)
     def friedman(self):
         text = self.friedman_text.toPlainText()
         self.friedman_results.setText(str(vg.friedmantest(text)))
@@ -70,7 +104,7 @@ class MainW (QMainWindow, Ui_MainWindow):
         #print(vg.encrypt(text, key))
         self.vg_encrypted_text.setText(vg.encrypt(text,key))
     def showenglish_freq_dialog(self):
-        dialog = QDialog()
+        dialog = QDialog(self)
         dialog.ui = Ui_english_freq_dialog()
         #dialog.ui.english_freq.axes.bar(5,3,0.8,align='center')
         values = [8.167,1.492,2.782,4.253,12.702,
@@ -86,12 +120,12 @@ class MainW (QMainWindow, Ui_MainWindow):
         dialog.ui.english_freq.axes.set_xticks(indexes)
         dialog.ui.english_freq.axes.set_xticklabels(labels)
         dialog.ui.english_freq.draw()
-        dialog.exec_()
+        dialog.show()
     def showDial(self):
-        dialog = QDialog()
+        dialog = QDialog(self)
         dialog.ui = Ui_about()
         dialog.ui.setupUi(dialog)
-        dialog.exec_()
+        dialog.show()
 
 if __name__ == '__main__':
 
