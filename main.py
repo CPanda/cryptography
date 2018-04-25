@@ -39,13 +39,14 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.split_text.clicked.connect(self.split)
         self.default_cipher.clicked.connect(self.defaultciphertext)
 
+    #sets the default ciphertext for options in the analyze tabs
     def defaultciphertext(self):
         text = self.default_cipher_textbox.toPlainText()
         if text:
             self.kasiski_test.setText(text)
             self.friedman_text.setText(text)
             self.freq_encrypt_text.setText(text)
-
+    #splits the text based on keylength found from kasiski test.
     def split(self):
         text = self.freq_encrypt_text.toPlainText()
         if text:
@@ -64,7 +65,7 @@ class MainW (QMainWindow, Ui_MainWindow):
             dialog.setModal(False)
             dialog.show()
 
-
+    #gets the Nth letter from a string so that it can be displayed in the "split" dialog.
     def getNthLetters(self, n, keylen, msg):
         i = n - 1
         letters = []
@@ -74,7 +75,7 @@ class MainW (QMainWindow, Ui_MainWindow):
         return ''.join(letters)
 
 
-
+    #analyzes and sets the figure for the frequency count of the letters.
     def freq_analyze(self):
         self.freq_graph.axes.clear()
         text = self.freq_encrypt_text.toPlainText()
@@ -95,27 +96,33 @@ class MainW (QMainWindow, Ui_MainWindow):
             self.freq_graph.axes.set_xticks(indexes )
             self.freq_graph.axes.set_xticklabels(labels)
             self.freq_graph.draw()
-        #self.freq_graph.figure.savefig('fig.png')
 
+    #saves an iamge to the current working directory.
     def saveimage(self):
         text = self.save_text.text()
         if text:
             self.freq_graph.figure.savefig(text)
+
+    #performs the friedman test on the text from the friedman test text box.
     def friedman(self):
         text = self.friedman_text.toPlainText()
         if text:
             self.friedman_results.setText(str(vg.friedmantest(text)))
+    #performs vigenere decryption on the ciphertext in the vg tab.
     def vg_decrypt(self):
         text = self.vg_encrypted_text.toPlainText()
         key = self.vg_key.toPlainText()
         if text:
             self.vg_plaintextEdit.setText(vg.decrypt(text,key))
+    #encrypts text in the vinenere tab.
     def vg_encrypt(self):
         text = self.vg_plaintextEdit.toPlainText()
         key = self.vg_key.toPlainText()
         #print(vg.encrypt(text, key))
         if text and key:
             self.vg_encrypted_text.setText(vg.encrypt(text,key))
+
+    #shows a dynamic dialog that contains the english frequencies for the alphabet.
     def showenglish_freq_dialog(self):
         dialog = QDialog(self)
         dialog.ui = Ui_english_freq_dialog()
@@ -134,6 +141,7 @@ class MainW (QMainWindow, Ui_MainWindow):
         dialog.ui.english_freq.axes.set_xticklabels(labels)
         dialog.ui.english_freq.draw()
         dialog.show()
+    #shows the about dialog.
     def showDial(self):
         dialog = QDialog(self)
         dialog.ui = Ui_about()
