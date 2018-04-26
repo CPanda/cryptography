@@ -3,21 +3,22 @@ This is the main python file that will use functions from playfair, vigenere, et
 
 Simple QT5 Gui
 
+Dylan Hoban
+
 """
 
 import sys
-import vigenere as vg
-import plots as pt
-import playfair as pf
-from PyQt5.QtGui import *
+import crypto_algs.vigenere as vg
+#import playfair as pf
+#from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from crypto import Ui_MainWindow
-from about import Ui_about
-from save_graph import Ui_save_graph
-from english_frequency import Ui_english_freq_dialog
-from textsplit import Ui_split_Dialog
+#from PyQt5.QtCore import *
+from gui.crypto import Ui_MainWindow
+from gui.about import Ui_about
+from gui.english_frequency import Ui_english_freq_dialog
+from gui.textsplit import Ui_split_Dialog
 from collections import Counter
+import crypto_algs.kasiski as ks
 import numpy as np
 
 class MainW (QMainWindow, Ui_MainWindow):
@@ -38,6 +39,13 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.save_text.setText("plot.png")
         self.split_text.clicked.connect(self.split)
         self.default_cipher.clicked.connect(self.defaultciphertext)
+        self.analyze_kasisiki.clicked.connect(self.kasiski)
+    def kasiski(self):
+        text = self.kasiski_test.toPlainText()
+        if text:
+            result = ks.kasiskitest(text)
+            #stringresult = str(result)
+            self.kasiski_results.setText("possibile key lengths: :"+str(result))
 
     #sets the default ciphertext for options in the analyze tabs
     def defaultciphertext(self):
@@ -46,6 +54,7 @@ class MainW (QMainWindow, Ui_MainWindow):
             self.kasiski_test.setText(text)
             self.friedman_text.setText(text)
             self.freq_encrypt_text.setText(text)
+
     #splits the text based on keylength found from kasiski test.
     def split(self):
         text = self.freq_encrypt_text.toPlainText()
@@ -57,11 +66,8 @@ class MainW (QMainWindow, Ui_MainWindow):
             dialog = QDialog(self)
             dialog.ui = Ui_split_Dialog()
             dialog.ui.setupUi(dialog)
-            #dialog.setAttribute(Qt.WA_DeleteOnClose)
-            #dialog.ui.connect(dialog.ui, SIGNAL("finished(int)"), lambda x:self.finished())
             for i in range(len(arry)):
                 dialog.ui.split_result.append(arry[i]+'\n')
-            #dialog.resize(200,100)
             dialog.setModal(False)
             dialog.show()
 

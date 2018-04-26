@@ -1,6 +1,8 @@
 """
 These functions handle the Vigenere Cipher.
 
+Dylan Hoban
+
 """
 
 import collections
@@ -11,6 +13,7 @@ import functools
 """
 Temporary testing function. This will be removed later on.
 """
+
 
 
 def main1():
@@ -70,48 +73,6 @@ def decrypt(ciphertext, key):
     return decrypted
 
 
-"""
-Kasiski test
-
-Still a work in progress. 
-"""
-
-
-def kasiskitest(ciphertext):
-    # Goes through the message and finds any 3 to 5 letter sequences
-    # that are repeated. Returns a dict with the keys of the sequence and
-    # values of a list of spacings (num of letters between the repeats).
-
-    # Compile a list of seqLen-letter sequences found in the message.
-    spacings = []
-    seqSpacings = {}  # keys are sequences, values are list of int spacings
-    for seqLen in range(3, 6):
-        for seqStart in range(len(ciphertext) - seqLen):
-            # Determine what the sequence is, and store it in seq
-            seq = ciphertext[seqStart:seqStart + seqLen]
-
-            # Look for this sequence in the rest of the message
-            for i in range(seqStart + seqLen, len(ciphertext) - seqLen):
-                if ciphertext[i:i + seqLen] == seq:
-                    # Found a repeated sequence.
-                    if seq not in seqSpacings:
-                        seqSpacings[seq] = []  # initialize blank list
-
-                    # Append the spacing distance between the repeated
-                    # sequence and the original sequence.
-                    spacings.append(i - seqStart)
-                    seqSpacings[seq].append(i - seqStart)
-    if (len(spacings) > 2):
-        result = spacings[0]
-        for i in spacings[1:]:
-            result = math.gcd(result, i)
-        return result
-    elif (len(spacings) == 2):
-        return math.gcd(spacings[0], spacings[1])
-    elif (len(spacings) == 0):
-        return
-    else:
-        return spacings[0]
 
 
 """

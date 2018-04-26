@@ -230,7 +230,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_9"/>
+               <widget class="QTextEdit" name="kasiski_results"/>
               </item>
               <item>
                <widget class="QPushButton" name="analyze_kasisiki">
@@ -298,7 +298,7 @@
                </widget>
               </item>
               <item>
-               <widget class="MatplotlibWidget" name="freq_graph"/>
+               <widget class="MatplotlibWidget" name="freq_graph" native="true"/>
               </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_6">
