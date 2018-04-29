@@ -8,6 +8,7 @@ Dylan Hoban
 """
 
 import sys
+import crypto_algs.rsa as rsa
 import crypto_algs.vigenere as vg
 #import playfair as pf
 #from PyQt5.QtGui import *
@@ -40,6 +41,49 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.split_text.clicked.connect(self.split)
         self.default_cipher.clicked.connect(self.defaultciphertext)
         self.analyze_kasisiki.clicked.connect(self.kasiski)
+        self.rsa_pq_button.clicked.connect(self.rsa_pq)
+        self.rsa_find_d.clicked.connect(self.rsa_e)
+        self.rsa_encrypt_decrypt.clicked.connect(self.rsa_enc_dec)
+        self.set_rsa.clicked.connect(self.set_rsa_fields)
+    def set_rsa_fields(self):
+        n = self.rsa_n.text()
+        e = self.rsa_e_find_d.text()
+        d = self.rsa_box_find_d.toPlainText()
+        if n and e and d:
+            self.rsa_encdec_e.setText(e)
+            self.rsa_encdec_d.setText(d)
+            self.rsa_encdec_n.setText(n)
+
+    def rsa_enc_dec(self):
+        plaintext = self.csv_rsa_plain.toPlainText()
+        encrypttext = self.csv_rsa_encrypt.toPlainText()
+        n = self.rsa_encdec_n.text()
+        e = self.rsa_encdec_e.text()
+        d = self.rsa_encdec_d.text()
+
+        if plaintext and n and e:
+            numlist = [int(x) for x in plaintext.split(',') if x.strip().isdigit()]
+            result = rsa.encrypt(numlist, int(n), int(e))
+            self.csv_rsa_encrypt.setText(str(result)[1:-1])
+        if encrypttext and n and d:
+            numlist = [int(x) for x in encrypttext.split(',') if x.strip().isdigit()]
+            result = rsa.decrypt(numlist, int(n), int(d))
+            self.csv_rsa_plain.setText((str(result)[1:-1]))
+
+    def rsa_e(self):
+        p = int(self.rsa_p_find_d.text())
+        q = int(self.rsa_q_find_d.text())
+        e = int(self.rsa_e_find_d.text())
+        if p and q and e:
+            self.rsa_box_find_d.setText(str(rsa.find_d(p,q,e)))
+
+    def rsa_pq(self):
+        text = self.rsa_n.text()
+        if text:
+            result = rsa.getpq(int(text))
+            self.pq_results.setText("P and Q: "+str(result))
+            self.rsa_p_find_d.setText(str(result[0]))
+            self.rsa_q_find_d.setText(str(result[1]))
     def kasiski(self):
         text = self.kasiski_test.toPlainText()
         if text:

@@ -20,7 +20,7 @@
       <item>
        <widget class="QTabWidget" name="main_tab">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="encrypt_decrypt">
          <attribute name="title">
@@ -30,7 +30,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab">
             <property name="currentIndex">
-             <number>2</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -176,6 +176,84 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="rsa">
+             <property name="toolTip">
+              <string extracomment="Test"/>
+             </property>
+             <property name="toolTipDuration">
+              <number>5</number>
+             </property>
+             <attribute name="title">
+              <string>RSA</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_9">
+                  <item>
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>N:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="rsa_encdec_n"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>E:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="rsa_encdec_e"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_21">
+                    <property name="text">
+                     <string>D:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="rsa_encdec_d"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Numbers/Encoding Scheme:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="csv_rsa_plain"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>Encrypted Numbers:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="csv_rsa_encrypt"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="rsa_encrypt_decrypt">
+                <property name="text">
+                 <string>Decrypt/Encrypt</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -188,7 +266,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab_2">
             <property name="currentIndex">
-             <number>3</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="tab_9">
              <attribute name="title">
@@ -346,6 +424,105 @@
                <widget class="QPushButton" name="eng_freq_button">
                 <property name="text">
                  <string>English Freqency Graph</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_3">
+             <attribute name="title">
+              <string>RSA</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QLabel" name="label_25">
+                <property name="text">
+                 <string>Try to find P and Q: (Extremely large numbers will not work.)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>N:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="rsa_n"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_24">
+                <property name="text">
+                 <string>Results:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="pq_results"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="rsa_pq_button">
+                <property name="text">
+                 <string>Analyze</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_26">
+                <property name="text">
+                 <string>Find D supplying P and Q along with the encryption key, E: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <widget class="QLabel" name="label_27">
+                  <property name="text">
+                   <string>P:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="rsa_p_find_d"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_28">
+                  <property name="text">
+                   <string>Q:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="rsa_q_find_d"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_29">
+                  <property name="text">
+                   <string>E:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="rsa_e_find_d"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="rsa_box_find_d"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="rsa_find_d">
+                <property name="text">
+                 <string>Find D</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="set_rsa">
+                <property name="text">
+                 <string>Set N, E, and D in Encrypt/Decrypt Tab</string>
                 </property>
                </widget>
               </item>
