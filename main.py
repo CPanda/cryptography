@@ -59,7 +59,7 @@ class MainW (QMainWindow, Ui_MainWindow):
             ezknap = [int(x) for x in ez.split(',') if x.strip().isdigit()]
             encrypted = [int(x) for x in encrypted.split(',') if x.strip().isdigit()]
             binary = knap.getbinary(encrypted,ezknap,int(m),int(invw))
-            self.knap_bin.setText(str(binary))
+            self.knap_bin.setText(str(binary)[4:-1])
     def set_knapsack_fields(self):
         m = self.anal_knapsack_m.text()
         w = self.anal_knapsack_w.text()
