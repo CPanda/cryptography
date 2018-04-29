@@ -55,11 +55,20 @@ class MainW (QMainWindow, Ui_MainWindow):
         ez = self.knap_ez.text()
         invw = self.knap_invw.text()
         encrypted = self.knap_encrypted_text.toPlainText()
+        binary = self.knap_bin.toPlainText()
         if ez and encrypted and m and invw:
             ezknap = [int(x) for x in ez.split(',') if x.strip().isdigit()]
             encrypted = [int(x) for x in encrypted.split(',') if x.strip().isdigit()]
-            binary = knap.getbinary(encrypted,ezknap,int(m),int(invw))
-            self.knap_bin.setText(str(binary)[4:-1])
+            binaryres = knap.getbinary(encrypted,ezknap,int(m),int(invw))
+            self.knap_bin.setText(str(binaryres)[1:-1].replace('\'',''))
+        if w and m and ez and binary:
+            ezknap = [int(x) for x in ez.split(',') if x.strip().isdigit()]
+            binlist = binary.split(",")
+            encoded = knap.getEncoded(binlist, ezknap, int(m), int(w))
+            print(encoded)
+            self.knap_encrypted_text.setText(str(encoded)[1:-1])
+
+
     def set_knapsack_fields(self):
         m = self.anal_knapsack_m.text()
         w = self.anal_knapsack_w.text()

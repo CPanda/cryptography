@@ -5,6 +5,22 @@ Dylan Hoban
 """
 from crypto_algs.rsa import xgcd
 
+def getEncoded(binlist, ezlist, m, w):
+    hardknap = []
+    result = []
+    sum = 0
+    for i in ezlist:
+        hardknap.append(i*w%m)
+    for item in binlist:
+        for i in range(len(item)):
+            if item[i] == '1':
+                sum += hardknap[i]
+        result.append(sum)
+        sum = 0
+    return result
+
+
+
 def getbinary(list, ezknap, m, winv):
     converted = []
     binaryresult = []
@@ -12,17 +28,27 @@ def getbinary(list, ezknap, m, winv):
     ezknap.sort(reverse=True)
     for i in list:
         converted.append(i*winv%m)
-    for item in converted:
-        binaryresult.append(result[::-1])
+    backup = converted[:]
+    for i in range(len(converted)):
+        #binaryresult.append(result[::-1])
         result = ''
         for ezitem in ezknap:
-            print("EzItem ", ezitem, "ITEM : ", item)
-            if(item>=ezitem):
+            if(converted[i]>=ezitem):
                 result+='1'
-                item-=ezitem
+                converted[i]-=ezitem
             else:
                 result+='0'
-    binaryresult.append(result[::-1])
+        #If not zero, then try adding the mod to the number.
+        if(converted[i]!=0):
+            result = ''
+            converted[i] = backup[i] + m
+            for ezitem in ezknap:
+                if (converted[i] >= ezitem):
+                    result += '1'
+                    converted[i] -= ezitem
+                else:
+                    result += '0'
+        binaryresult.append(result[::-1])
     return binaryresult
 
 
