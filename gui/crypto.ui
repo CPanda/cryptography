@@ -30,7 +30,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab">
             <property name="currentIndex">
-             <number>3</number>
+             <number>4</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -228,7 +228,7 @@
               <item>
                <widget class="QLabel" name="label_22">
                 <property name="text">
-                 <string>Numbers/Encoding Scheme:</string>
+                 <string>Plain Numbers/Encoding Scheme: (Usually A = 01, B=02,..Z=26)</string>
                 </property>
                </widget>
               </item>
@@ -254,6 +254,92 @@
               </item>
              </layout>
             </widget>
+            <widget class="QWidget" name="tab_4">
+             <attribute name="title">
+              <string>Knapsack</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <item>
+                 <widget class="QLabel" name="label_17">
+                  <property name="text">
+                   <string>M:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="knap_m"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_18">
+                  <property name="text">
+                   <string>W:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="knap_w"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QLabel" name="label_30">
+                  <property name="text">
+                   <string>W-:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="knap_invw"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <widget class="QLabel" name="label_31">
+                  <property name="text">
+                   <string>Easy Knapsack:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="knap_ez"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_32">
+                <property name="text">
+                 <string>Binary Plain:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="knap_bin"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_33">
+                <property name="text">
+                 <string>Encoded (comma separated):</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="knap_encrypted_text"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="knap_btn_encdec">
+                <property name="text">
+                 <string>Encode/Decode</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -266,7 +352,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab_2">
             <property name="currentIndex">
-             <number>4</number>
+             <number>5</number>
             </property>
             <widget class="QWidget" name="tab_9">
              <attribute name="title">
@@ -523,6 +609,94 @@
                <widget class="QPushButton" name="set_rsa">
                 <property name="text">
                  <string>Set N, E, and D in Encrypt/Decrypt Tab</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_6">
+             <attribute name="title">
+              <string>Knapsack</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <item>
+                 <widget class="QLabel" name="label_37">
+                  <property name="text">
+                   <string>M</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="anal_knapsack_m"/>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_36">
+                  <property name="text">
+                   <string>W-: (optional)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="anal_knapsack_winverse">
+                  <property name="toolTip">
+                   <string extracomment="Not Required."/>
+                  </property>
+                  <property name="toolTipDuration">
+                   <number>3</number>
+                  </property>
+                  <property name="statusTip">
+                   <string extracomment="Not Required"/>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_35">
+                  <property name="text">
+                   <string>W</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="anal_knapsack_w"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_34">
+                <property name="text">
+                 <string>Hard Knapsack</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="anal_hard_knapsack"/>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_38">
+                <property name="text">
+                 <string>Easy Knapsack</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="anal_ez_knapsack"/>
+              </item>
+              <item>
+               <widget class="QPushButton" name="find_ez_knapsack">
+                <property name="text">
+                 <string>Find Easy Knapsack/W-</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="set_knapsack">
+                <property name="text">
+                 <string>Set M, W, Easy Knapsack in Encrypt/Decrypt Tab</string>
                 </property>
                </widget>
               </item>

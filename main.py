@@ -10,6 +10,7 @@ Dylan Hoban
 import sys
 import crypto_algs.rsa as rsa
 import crypto_algs.vigenere as vg
+import crypto_algs.knapsack as knap
 #import playfair as pf
 #from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -45,6 +46,49 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.rsa_find_d.clicked.connect(self.rsa_e)
         self.rsa_encrypt_decrypt.clicked.connect(self.rsa_enc_dec)
         self.set_rsa.clicked.connect(self.set_rsa_fields)
+        self.find_ez_knapsack.clicked.connect(self.analyze_knapsack)
+        self.set_knapsack.clicked.connect(self.set_knapsack_fields)
+        self.knap_btn_encdec.clicked.connect(self.decode_knap)
+    def decode_knap(self):
+        m = self.knap_m.text()
+        w = self.knap_w.text()
+        ez = self.knap_ez.text()
+        invw = self.knap_invw.text()
+        encrypted = self.knap_encrypted_text.toPlainText()
+        if ez and encrypted and m and invw:
+            ezknap = [int(x) for x in ez.split(',') if x.strip().isdigit()]
+            encrypted = [int(x) for x in encrypted.split(',') if x.strip().isdigit()]
+            binary = knap.getbinary(encrypted,ezknap,int(m),int(invw))
+            self.knap_bin.setText(str(binary))
+    def set_knapsack_fields(self):
+        m = self.anal_knapsack_m.text()
+        w = self.anal_knapsack_w.text()
+        winv = self.anal_knapsack_winverse.text()
+        easyknap = self.anal_ez_knapsack.toPlainText()
+        if m and w and winv and easyknap:
+            self.knap_m.setText(m)
+            self.knap_w.setText(w)
+            self.knap_ez.setText(easyknap)
+            self.knap_invw.setText(winv)
+
+
+    def analyze_knapsack(self):
+        m = self.anal_knapsack_m.text()
+        w = self.anal_knapsack_w.text()
+        winv = self.anal_knapsack_winverse.text()
+        hardknap = self.anal_hard_knapsack.toPlainText()
+        easyknap = self.anal_ez_knapsack.toPlainText()
+        if m and w and not winv:
+            winv = knap.find_winv(int(m), int(w))
+            self.anal_knapsack_winverse.setText(str(winv))
+        if m and winv and hardknap:
+            numlist = [int(x) for x in hardknap.split(',') if x.strip().isdigit()]
+            easyknap = knap.find_easy_knap(numlist, int(m), int(winv))
+            self.anal_ez_knapsack.setText(str(easyknap)[1:-1])
+
+
+
+
     def set_rsa_fields(self):
         n = self.rsa_n.text()
         e = self.rsa_e_find_d.text()

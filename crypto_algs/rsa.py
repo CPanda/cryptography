@@ -1,3 +1,9 @@
+"""
+Includes RSA functions
+
+Dylan Hoban
+"""
+
 from sympy import factorint
 import math
 
