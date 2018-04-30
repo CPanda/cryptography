@@ -155,8 +155,9 @@ class MainW (QMainWindow, Ui_MainWindow):
     #splits the text based on keylength found from kasiski test.
     def split(self):
         text = self.freq_encrypt_text.toPlainText()
-        if text:
-            loopno = int(self.key_len.text())
+        key_length = self.key_len.text()
+        if text and key_length:
+            loopno = int(key_length)
             arry = []
             for i in range(1,loopno+1):
                 arry.append(self.getNthLetters(i, loopno, text))
