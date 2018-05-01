@@ -82,7 +82,6 @@ class MainW (QMainWindow, Ui_MainWindow):
             ezknap = [int(x) for x in ez.split(',') if x.strip().isdigit()]
             binlist = binary.split(",")
             encoded = knap.getEncoded(binlist, ezknap, int(m), int(w))
-            print(encoded)
             self.knap_encrypted_text.setText(str(encoded)[1:-1])
 
 
