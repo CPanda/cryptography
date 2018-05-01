@@ -22,6 +22,7 @@ from gui.textsplit import Ui_split_Dialog
 from collections import Counter
 import crypto_algs.kasiski as ks
 import numpy as np
+import crypto_algs.atbash as atbash
 
 class MainW (QMainWindow, Ui_MainWindow):
     """
@@ -51,6 +52,15 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.knap_btn_encdec.clicked.connect(self.decode_knap)
         self.playfair_encrypt_btn.clicked.connect(self.encode_playfair)
         self.playfair_decrypt_btn.clicked.connect(self.decode_playfair)
+        self.atbash.clicked.connect(self.atbash_process)
+    def atbash_process(self):
+        enctext = self.atbash_enc.toPlainText()
+        plaintext = self.atbash_plain.toPlainText()
+        if enctext:
+            self.atbash_plain.setText(atbash.atbash(enctext))
+        elif plaintext:
+            self.atbash_enc.setText(atbash.atbash(plaintext))
+
 
     def decode_playfair(self):
         enctext = self.playfair_decrypt_encrypted_text.toPlainText()

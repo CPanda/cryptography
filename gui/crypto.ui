@@ -30,7 +30,7 @@
           <item>
            <widget class="QTabWidget" name="encrypt_decrypt_tab">
             <property name="currentIndex">
-             <number>1</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="tab">
              <attribute name="title">
@@ -95,7 +95,7 @@
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="tab_7">
                  <attribute name="title">
@@ -210,7 +210,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_7"/>
+               <widget class="QTextEdit" name="atbash_plain"/>
               </item>
               <item>
                <widget class="QLabel" name="label_8">
@@ -220,7 +220,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QTextEdit" name="textEdit_8"/>
+               <widget class="QTextEdit" name="atbash_enc"/>
               </item>
               <item>
                <widget class="QPushButton" name="atbash">

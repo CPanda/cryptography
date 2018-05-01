@@ -1,5 +1,7 @@
+from crypto_algs.vigenere import processtext
+
 def atbash(text):
-  text = text.lower()
+  text = processtext(text)
   switcher = {
         'a': "z",
         'b': "y",
