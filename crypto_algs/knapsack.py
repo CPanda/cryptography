@@ -59,7 +59,7 @@ def find_winv(m, w):
     print(b0,x0,y0)
     if (y0<0):
         y0 += m
-    return y0 #this is winv
+    return y0 #this is winv (w inverse)
 
 def find_easy_knap(list, m, winv):
     result = []

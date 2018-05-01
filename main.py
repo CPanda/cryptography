@@ -11,7 +11,7 @@ import sys
 import crypto_algs.rsa as rsa
 import crypto_algs.vigenere as vg
 import crypto_algs.knapsack as knap
-#import playfair as pf
+import crypto_algs.playfair as pf
 #from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 #from PyQt5.QtCore import *
@@ -49,6 +49,23 @@ class MainW (QMainWindow, Ui_MainWindow):
         self.find_ez_knapsack.clicked.connect(self.analyze_knapsack)
         self.set_knapsack.clicked.connect(self.set_knapsack_fields)
         self.knap_btn_encdec.clicked.connect(self.decode_knap)
+        self.playfair_encrypt_btn.clicked.connect(self.encode_playfair)
+        self.playfair_decrypt_btn.clicked.connect(self.decode_playfair)
+
+    def decode_playfair(self):
+        enctext = self.playfair_decrypt_encrypted_text.toPlainText()
+        key = self.decrypt_playfair_key.text()
+        if enctext and key:
+            result = pf.decodePlayfair(enctext, key)
+            self.playfair_decrypt_plaintext.setText(result)
+
+    def encode_playfair(self):
+        text = self.playfair_enc_plaintext.toPlainText()
+        key = self.playfair_key_enc.text()
+        if text and key:
+            result = pf.encodePlayfair(text, key)
+            self.playfair_encrypted_text.setText(result)
+
     def decode_knap(self):
         m = self.knap_m.text()
         w = self.knap_w.text()

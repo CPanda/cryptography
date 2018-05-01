@@ -42,16 +42,16 @@ def splitMessage(message):
     blocks = message
     blocks = blocks.replace(' ', '')
     blocks = re.findall('.?', blocks)
-    i = 0;
-    j = 1;
+    i = 0
+    j = 1
     if len(blocks) % 2 == 0:
-        for x in range(1, (len(blocks)/2)+1):
+        for x in range(1, (len(blocks)//2)+1):
             i = x*2-2
             j = x*2-1
             if blocks[i] == blocks[j]:
                 blocks.insert(j, 'x')
     else:
-        for x in range(1, (len(blocks)/2)):
+        for x in range(1, (len(blocks)//2)):
             i = x*2-2
             j = x*2-1
             if blocks[i] == blocks[j]:
@@ -75,6 +75,11 @@ def encodePlayfair(msg, key):
     message = msg.lower()
     keyword = key.lower()
     encoded = ""
+    #intialize variables
+    c1_yIndex = 0
+    c2_yIndex = 0
+    c1_xIndex = 0
+    c2_xIndex = 0
 
     for p in pairs:
         c1 = p[0]
@@ -123,7 +128,7 @@ def encodePlayfair(msg, key):
             newPair+=grid[c2_yIndex][c1_xIndex]
 
         encoded+=(newPair)
-
+    print("Encoded ", encoded)
     return encoded
 
 def decodePlayfair(cipher, key):
@@ -131,7 +136,12 @@ def decodePlayfair(cipher, key):
     ciphertext = cipher.lower()
     keyword = key.lower()
     decoded = ""
-    pairs = re.findall('..?', ciphertext);
+    pairs = re.findall('..?', ciphertext)
+    #initialize variables
+    c1_yIndex = 0
+    c2_yIndex = 0
+    c1_xIndex = 0
+    c2_xIndex = 0
     for p in pairs:
         c1 = p[0]
         c2 = p[1]
