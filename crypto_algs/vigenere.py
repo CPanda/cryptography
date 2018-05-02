@@ -58,6 +58,7 @@ Decrypts using the Vigenere Cipher
 
 
 def decrypt(ciphertext, key):
+    ciphertext = processtext(ciphertext)
     i = 0
     ordnumber = 0
     j = len(key)
